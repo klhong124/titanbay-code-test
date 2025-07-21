@@ -1,8 +1,8 @@
 <template>
-  <div class="min-h-screen bg-white p-4 md:p-8">
-    <div class="max-w-4xl mx-auto">
-      <!-- Main Form Container -->
-      <div class="border-2 border-black bg-white">
+  <div class="min-h-screen bg-white">
+    <div class="flex flex-col lg:flex-row min-h-screen">
+      <!-- Left Section - Event Information -->
+      <div class="lg:w-1/2 border-r-0 lg:border-r-2 border-black bg-white">
         <!-- Header Section -->
         <div class="text-center p-8 border-b-2 border-black">
           <div class="inline-flex items-center justify-center w-20 h-20 border-2 border-black rounded-full mb-6">
@@ -16,9 +16,86 @@
           </p>
         </div>
 
+        <!-- Event Details -->
+        <div class="p-8 space-y-8">
+          <div class="space-y-6">
+            <h2 class="text-xl font-bold text-black border-b-2 border-black pb-2">
+              Event Details
+            </h2>
+            
+            <div class="space-y-4">
+              <div class="flex items-center space-x-4">
+                <Calendar class="w-6 h-6 text-black" />
+                <div>
+                  <h3 class="font-bold text-black">Date</h3>
+                  <p class="text-black">March 15, 2025</p>
+                </div>
+              </div>
+
+              <div class="flex items-center space-x-4">
+                <Clock class="w-6 h-6 text-black" />
+                <div>
+                  <h3 class="font-bold text-black">Time</h3>
+                  <p class="text-black">6:00 PM – 9:00 PM</p>
+                </div>
+              </div>
+
+              <div class="flex items-center space-x-4">
+                <MapPin class="w-6 h-6 text-black" />
+                <div>
+                  <h3 class="font-bold text-black">Location</h3>
+                  <p class="text-black">Tech Hub Soho</p>
+                  <p class="text-sm text-gray-600">123 Innovation Street, London</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- What to Expect -->
+          <div class="space-y-6">
+            <h2 class="text-xl font-bold text-black border-b-2 border-black pb-2">
+              What to Expect
+            </h2>
+            
+            <div class="space-y-4">
+              <div class="border-2 border-black p-4">
+                <h3 class="font-bold text-black mb-2">Networking Sessions</h3>
+                <p class="text-black">Connect with developers from various backgrounds and experience levels</p>
+              </div>
+              
+              <div class="border-2 border-black p-4">
+                <h3 class="font-bold text-black mb-2">Tech Talks</h3>
+                <p class="text-black">Short presentations on the latest trends in web development</p>
+              </div>
+              
+              <div class="border-2 border-black p-4">
+                <h3 class="font-bold text-black mb-2">Food & Drinks</h3>
+                <p class="text-black">Complimentary refreshments and light dinner provided</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Networking Interests Preview -->
+          <div class="space-y-6">
+            <h2 class="text-xl font-bold text-black border-b-2 border-black pb-2">
+              Topics & Interests
+            </h2>
+            
+            <div class="grid grid-cols-2 gap-2">
+              <div v-for="interest in networkingInterests.slice(0, 6)" :key="interest" class="border border-black p-2 text-center">
+                <span class="text-sm font-medium text-black">{{ interest }}</span>
+              </div>
+            </div>
+            <p class="text-sm text-gray-600">Select your interests in the registration form →</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Section - Registration Form -->
+      <div class="lg:w-1/2 bg-white">
         <!-- Success Screen -->
-        <div v-if="showSuccess" class="p-8 text-center">
-          <div class="inline-flex items-center justify-center w-20 h-20 border-2 border-black rounded-full mb-6">
+        <div v-if="showSuccess" class="p-8 text-center min-h-screen flex flex-col justify-center">
+          <div class="inline-flex items-center justify-center w-20 h-20 border-2 border-black rounded-full mb-6 mx-auto">
             <Check class="w-8 h-8 text-black" />
           </div>
           <h2 class="text-2xl font-bold text-black mb-4">Registration Successful!</h2>
@@ -27,225 +104,204 @@
           </p>
           <button
             @click="resetForm"
-            class="border-2 border-black bg-white text-black px-6 py-3 hover:bg-black hover:text-white transition-colors"
+            class="border-2 border-black bg-white text-black px-6 py-3 hover:bg-black hover:text-white transition-colors mx-auto"
           >
             Register Another Person
           </button>
         </div>
 
-        <!-- Form -->
-        <form v-else @submit.prevent="submitForm" class="p-8 space-y-8">
-          <!-- Personal Information Section -->
-          <div class="space-y-6">
-            <h2 class="text-xl font-bold text-black border-b-2 border-black pb-2">
-              Personal Information
-            </h2>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div>
-                <label class="block text-sm font-medium text-black mb-2">
-                  First Name *
-                </label>
-                <input
-                  v-model="form.firstName"
-                  type="text"
-                  class="w-full p-3 border-2 border-black bg-white text-black focus:border-black"
-                  :class="{ 'border-red-500': errors.firstName }"
-                  required
-                />
-                <p v-if="errors.firstName" class="text-red-500 text-sm mt-1">
-                  {{ errors.firstName }}
-                </p>
-              </div>
-
-              <div>
-                <label class="block text-sm font-medium text-black mb-2">
-                  Last Name *
-                </label>
-                <input
-                  v-model="form.lastName"
-                  type="text"
-                  class="w-full p-3 border-2 border-black bg-white text-black focus:border-black"
-                  :class="{ 'border-red-500': errors.lastName }"
-                  required
-                />
-                <p v-if="errors.lastName" class="text-red-500 text-sm mt-1">
-                  {{ errors.lastName }}
-                </p>
-              </div>
-            </div>
-
-            <div>
-              <label class="block text-sm font-medium text-black mb-2">
-                Email Address *
-              </label>
-              <input
-                v-model="form.email"
-                type="email"
-                class="w-full p-3 border-2 border-black bg-white text-black focus:border-black"
-                :class="{ 'border-red-500': errors.email }"
-                required
-              />
-              <p v-if="errors.email" class="text-red-500 text-sm mt-1">
-                {{ errors.email }}
-              </p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div>
-                <label class="block text-sm font-medium text-black mb-2">
-                  Company *
-                </label>
-                <input
-                  v-model="form.company"
-                  type="text"
-                  class="w-full p-3 border-2 border-black bg-white text-black focus:border-black"
-                  :class="{ 'border-red-500': errors.company }"
-                  required
-                />
-                <p v-if="errors.company" class="text-red-500 text-sm mt-1">
-                  {{ errors.company }}
-                </p>
-              </div>
-
-              <div>
-                <label class="block text-sm font-medium text-black mb-2">
-                  Role *
-                </label>
-                <input
-                  v-model="form.role"
-                  type="text"
-                  class="w-full p-3 border-2 border-black bg-white text-black focus:border-black"
-                  :class="{ 'border-red-500': errors.role }"
-                  required
-                />
-                <p v-if="errors.role" class="text-red-500 text-sm mt-1">
-                  {{ errors.role }}
-                </p>
-              </div>
-            </div>
-
-            <div>
-              <label class="block text-sm font-medium text-black mb-2">
-                Experience Level *
-              </label>
-              <select
-                v-model="form.experienceLevel"
-                class="w-full p-3 border-2 border-black bg-white text-black focus:border-black"
-                :class="{ 'border-red-500': errors.experienceLevel }"
-                required
-              >
-                <option value="">Select your experience level</option>
-                <option value="student">Student</option>
-                <option value="entry">Entry Level (0–2 years)</option>
-                <option value="mid">Mid Level (3–5 years)</option>
-                <option value="senior">Senior Level (6–10 years)</option>
-                <option value="lead">Lead/Principal (10+ years)</option>
-                <option value="executive">Executive/CTO</option>
-              </select>
-              <p v-if="errors.experienceLevel" class="text-red-500 text-sm mt-1">
-                {{ errors.experienceLevel }}
-              </p>
-            </div>
+        <!-- Registration Form -->
+        <div v-else class="p-8">
+          <div class="mb-8">
+            <h2 class="text-2xl font-bold text-black mb-2">Register Now</h2>
+            <p class="text-black">Fill out the form below to secure your spot</p>
           </div>
 
-          <!-- Preferences & Requirements Section -->
-          <div class="space-y-6">
-            <h2 class="text-xl font-bold text-black border-b-2 border-black pb-2">
-              Preferences & Requirements
-            </h2>
+          <form @submit.prevent="submitForm" class="space-y-6">
+            <!-- Personal Information Section -->
+            <div class="space-y-4">
+              <h3 class="text-lg font-bold text-black border-b border-black pb-2">
+                Personal Information
+              </h3>
 
-            <div>
-              <label class="block text-sm font-medium text-black mb-2">
-                Dietary Restrictions
-              </label>
-              <input
-                v-model="form.dietaryRestrictions"
-                type="text"
-                class="w-full p-3 border-2 border-black bg-white text-black focus:border-black"
-                placeholder="e.g., Vegetarian, Gluten-free, etc."
-              />
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-sm font-medium text-black mb-2">
+                    First Name *
+                  </label>
+                  <input
+                    v-model="form.firstName"
+                    type="text"
+                    class="w-full p-3 border-2 border-black bg-white text-black focus:border-black"
+                    :class="{ 'border-red-500': errors.firstName }"
+                    required
+                  />
+                  <p v-if="errors.firstName" class="text-red-500 text-sm mt-1">
+                    {{ errors.firstName }}
+                  </p>
+                </div>
+
+                <div>
+                  <label class="block text-sm font-medium text-black mb-2">
+                    Last Name *
+                  </label>
+                  <input
+                    v-model="form.lastName"
+                    type="text"
+                    class="w-full p-3 border-2 border-black bg-white text-black focus:border-black"
+                    :class="{ 'border-red-500': errors.lastName }"
+                    required
+                  />
+                  <p v-if="errors.lastName" class="text-red-500 text-sm mt-1">
+                    {{ errors.lastName }}
+                  </p>
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-sm font-medium text-black mb-2">
+                  Email Address *
+                </label>
+                <input
+                  v-model="form.email"
+                  type="email"
+                  class="w-full p-3 border-2 border-black bg-white text-black focus:border-black"
+                  :class="{ 'border-red-500': errors.email }"
+                  required
+                />
+                <p v-if="errors.email" class="text-red-500 text-sm mt-1">
+                  {{ errors.email }}
+                </p>
+              </div>
+
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-sm font-medium text-black mb-2">
+                    Company *
+                  </label>
+                  <input
+                    v-model="form.company"
+                    type="text"
+                    class="w-full p-3 border-2 border-black bg-white text-black focus:border-black"
+                    :class="{ 'border-red-500': errors.company }"
+                    required
+                  />
+                  <p v-if="errors.company" class="text-red-500 text-sm mt-1">
+                    {{ errors.company }}
+                  </p>
+                </div>
+
+                <div>
+                  <label class="block text-sm font-medium text-black mb-2">
+                    Role *
+                  </label>
+                  <input
+                    v-model="form.role"
+                    type="text"
+                    class="w-full p-3 border-2 border-black bg-white text-black focus:border-black"
+                    :class="{ 'border-red-500': errors.role }"
+                    required
+                  />
+                  <p v-if="errors.role" class="text-red-500 text-sm mt-1">
+                    {{ errors.role }}
+                  </p>
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-sm font-medium text-black mb-2">
+                  Experience Level *
+                </label>
+                <select
+                  v-model="form.experienceLevel"
+                  class="w-full p-3 border-2 border-black bg-white text-black focus:border-black"
+                  :class="{ 'border-red-500': errors.experienceLevel }"
+                  required
+                >
+                  <option value="">Select your experience level</option>
+                  <option value="student">Student</option>
+                  <option value="entry">Entry Level (0–2 years)</option>
+                  <option value="mid">Mid Level (3–5 years)</option>
+                  <option value="senior">Senior Level (6–10 years)</option>
+                  <option value="lead">Lead/Principal (10+ years)</option>
+                  <option value="executive">Executive/CTO</option>
+                </select>
+                <p v-if="errors.experienceLevel" class="text-red-500 text-sm mt-1">
+                  {{ errors.experienceLevel }}
+                </p>
+              </div>
             </div>
 
-            <div>
-              <label class="block text-sm font-medium text-black mb-2">
-                Special Requirements or Accommodations
-              </label>
-              <textarea
-                v-model="form.specialRequirements"
-                rows="4"
-                class="w-full p-3 border-2 border-black bg-white text-black focus:border-black resize-none"
-                placeholder="Please let us know if you need any special accommodations..."
-              ></textarea>
+            <!-- Preferences Section -->
+            <div class="space-y-4">
+              <h3 class="text-lg font-bold text-black border-b border-black pb-2">
+                Preferences & Requirements
+              </h3>
+
+              <div>
+                <label class="block text-sm font-medium text-black mb-2">
+                  Dietary Restrictions
+                </label>
+                <input
+                  v-model="form.dietaryRestrictions"
+                  type="text"
+                  class="w-full p-3 border-2 border-black bg-white text-black focus:border-black"
+                  placeholder="e.g., Vegetarian, Gluten-free, etc."
+                />
+              </div>
+
+              <div>
+                <label class="block text-sm font-medium text-black mb-2">
+                  Special Requirements
+                </label>
+                <textarea
+                  v-model="form.specialRequirements"
+                  rows="3"
+                  class="w-full p-3 border-2 border-black bg-white text-black focus:border-black resize-none"
+                  placeholder="Any special accommodations needed..."
+                ></textarea>
+              </div>
             </div>
-          </div>
 
-          <!-- Networking Interests Section -->
-          <div class="space-y-6">
-            <h2 class="text-xl font-bold text-black border-b-2 border-black pb-2">
-              Networking Interests
-            </h2>
+            <!-- Networking Interests Section -->
+            <div class="space-y-4">
+              <h3 class="text-lg font-bold text-black border-b border-black pb-2">
+                Networking Interests
+              </h3>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div
-                v-for="interest in networkingInterests"
-                :key="interest"
-                class="border-2 border-black p-4 cursor-pointer hover:bg-gray-50 transition-colors"
-                :class="{ 'bg-black text-white': form.interests.includes(interest) }"
-                @click="toggleInterest(interest)"
-              >
-                <div class="flex items-center space-x-3">
-                  <div
-                    class="w-4 h-4 border-2 border-black"
-                    :class="{ 'bg-white': form.interests.includes(interest) }"
-                  >
-                    <Check v-if="form.interests.includes(interest)" class="w-3 h-3 text-black" />
+              <div class="grid grid-cols-1 gap-2">
+                <div
+                  v-for="interest in networkingInterests"
+                  :key="interest"
+                  class="border-2 border-black p-3 cursor-pointer hover:bg-gray-50 transition-colors"
+                  :class="{ 'bg-black text-white': form.interests.includes(interest) }"
+                  @click="toggleInterest(interest)"
+                >
+                  <div class="flex items-center space-x-3">
+                    <div
+                      class="w-4 h-4 border-2 border-black flex items-center justify-center"
+                      :class="{ 'bg-white': form.interests.includes(interest) }"
+                    >
+                      <Check v-if="form.interests.includes(interest)" class="w-3 h-3 text-black" />
+                    </div>
+                    <span class="font-medium">{{ interest }}</span>
                   </div>
-                  <span class="font-medium">{{ interest }}</span>
                 </div>
               </div>
             </div>
-          </div>
 
-          <!-- Additional Information Section -->
-          <div class="space-y-6">
-            <h2 class="text-xl font-bold text-black border-b-2 border-black pb-2">
-              Additional Information
-            </h2>
-          </div>
-
-          <!-- Submit Button -->
-          <div class="pt-6">
-            <button
-              type="submit"
-              :disabled="isLoading"
-              class="w-full md:w-auto px-8 py-4 border-2 border-black bg-white text-black font-bold hover:bg-black hover:text-white transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-2"
-            >
-              <span v-if="isLoading" class="loading-spinner w-5 h-5 border-2 border-black border-t-transparent rounded-full"></span>
-              <span>{{ isLoading ? 'Submitting...' : 'Submit Registration' }}</span>
-            </button>
-          </div>
-        </form>
-      </div>
-
-      <!-- Event Details -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8">
-        <div class="border-2 border-black bg-white p-6 text-center">
-          <Calendar class="w-8 h-8 text-black mx-auto mb-4" />
-          <h3 class="font-bold text-black mb-2">Date</h3>
-          <p class="text-black">March 15, 2025</p>
-        </div>
-
-        <div class="border-2 border-black bg-white p-6 text-center">
-          <Clock class="w-8 h-8 text-black mx-auto mb-4" />
-          <h3 class="font-bold text-black mb-2">Time</h3>
-          <p class="text-black">6:00 PM – 9:00 PM</p>
-        </div>
-
-        <div class="border-2 border-black bg-white p-6 text-center">
-          <MapPin class="w-8 h-8 text-black mx-auto mb-4" />
-          <h3 class="font-bold text-black mb-2">Location</h3>
-          <p class="text-black">Tech Hub Soho</p>
+            <!-- Submit Button -->
+            <div class="pt-6">
+              <button
+                type="submit"
+                :disabled="isLoading"
+                class="w-full px-8 py-4 border-2 border-black bg-white text-black font-bold hover:bg-black hover:text-white transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-2"
+              >
+                <span v-if="isLoading" class="loading-spinner w-5 h-5 border-2 border-black border-t-transparent rounded-full"></span>
+                <span>{{ isLoading ? 'Submitting...' : 'Submit Registration' }}</span>
+              </button>
+            </div>
+          </form>
         </div>
       </div>
     </div>
