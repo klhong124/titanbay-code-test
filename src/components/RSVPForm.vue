@@ -1,7 +1,11 @@
 <template>
   <Layout>
-    <EventInformation />
-    <RegistrationForm />
+    <template #left>
+      <EventInformation />
+    </template>
+    <template #right>
+      <RegistrationForm />
+    </template>
   </Layout>
 </template>
 

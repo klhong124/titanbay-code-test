@@ -1,14 +1,14 @@
 <template>
-  <div class="lg:w-1/2 border-r-0 lg:border-r-2 border-black bg-white">
+  <div class="glass-card h-full">
     <!-- Header Section -->
-    <div class="text-center p-8 border-b-2 border-black">
-      <div class="inline-flex items-center justify-center w-20 h-20 border-2 border-black rounded-full mb-6">
-        <Code class="w-8 h-8 text-black" />
+    <div class="text-center p-8 border-b border-white/20">
+      <div class="inline-flex items-center justify-center w-20 h-20 glass-card-dark mb-6">
+        <Code class="w-8 h-8 text-white" />
       </div>
-      <h1 class="text-3xl md:text-4xl font-bold text-black mb-2">
+      <h1 class="text-3xl md:text-4xl font-bold text-white mb-2 drop-shadow-lg">
         Developer Meetup 2025.
       </h1>
-      <p class="text-lg text-black">
+      <p class="text-lg text-white/90 drop-shadow">
         Join us for an evening of networking, learning, and collaboration with fellow developers
       </p>
     </div>
@@ -16,33 +16,39 @@
     <!-- Event Details -->
     <div class="p-8 space-y-8">
       <div class="space-y-6">
-        <h2 class="text-xl font-bold text-black border-b-2 border-black pb-2">
+        <h2 class="text-xl font-bold text-white border-b border-white/30 pb-2 drop-shadow">
           Event Details
         </h2>
         
         <div class="space-y-4">
           <div class="flex items-center space-x-4">
-            <Calendar class="w-6 h-6 text-black" />
+            <div class="glass-card-dark p-2">
+              <Calendar class="w-6 h-6 text-white" />
+            </div>
             <div>
-              <h3 class="font-bold text-black">Date</h3>
-              <p class="text-black">March 15, 2025</p>
+              <h3 class="font-bold text-white drop-shadow">Date</h3>
+              <p class="text-white/90">March 15, 2025</p>
             </div>
           </div>
 
           <div class="flex items-center space-x-4">
-            <Clock class="w-6 h-6 text-black" />
+            <div class="glass-card-dark p-2">
+              <Clock class="w-6 h-6 text-white" />
+            </div>
             <div>
-              <h3 class="font-bold text-black">Time</h3>
-              <p class="text-black">6:00 PM – 9:00 PM</p>
+              <h3 class="font-bold text-white drop-shadow">Time</h3>
+              <p class="text-white/90">6:00 PM – 9:00 PM</p>
             </div>
           </div>
 
           <div class="flex items-center space-x-4">
-            <MapPin class="w-6 h-6 text-black" />
+            <div class="glass-card-dark p-2">
+              <MapPin class="w-6 h-6 text-white" />
+            </div>
             <div>
-              <h3 class="font-bold text-black">Location</h3>
-              <p class="text-black">Tech Hub Soho</p>
-              <p class="text-sm text-gray-600">123 Innovation Street, London</p>
+              <h3 class="font-bold text-white drop-shadow">Location</h3>
+              <p class="text-white/90">Tech Hub Soho</p>
+              <p class="text-sm text-white/70">123 Innovation Street, London</p>
             </div>
           </div>
         </div>
@@ -50,40 +56,40 @@
 
       <!-- What to Expect -->
       <div class="space-y-6">
-        <h2 class="text-xl font-bold text-black border-b-2 border-black pb-2">
+        <h2 class="text-xl font-bold text-white border-b border-white/30 pb-2 drop-shadow">
           What to Expect
         </h2>
         
         <div class="space-y-4">
-          <div class="border-2 border-black p-4">
-            <h3 class="font-bold text-black mb-2">Networking Sessions</h3>
-            <p class="text-black">Connect with developers from various backgrounds and experience levels</p>
+          <div class="glass-card-dark p-4">
+            <h3 class="font-bold text-white mb-2 drop-shadow">Networking Sessions</h3>
+            <p class="text-white/90">Connect with developers from various backgrounds and experience levels</p>
           </div>
           
-          <div class="border-2 border-black p-4">
-            <h3 class="font-bold text-black mb-2">Tech Talks</h3>
-            <p class="text-black">Short presentations on the latest trends in web development</p>
+          <div class="glass-card-dark p-4">
+            <h3 class="font-bold text-white mb-2 drop-shadow">Tech Talks</h3>
+            <p class="text-white/90">Short presentations on the latest trends in web development</p>
           </div>
           
-          <div class="border-2 border-black p-4">
-            <h3 class="font-bold text-black mb-2">Food & Drinks</h3>
-            <p class="text-black">Complimentary refreshments and light dinner provided</p>
+          <div class="glass-card-dark p-4">
+            <h3 class="font-bold text-white mb-2 drop-shadow">Food & Drinks</h3>
+            <p class="text-white/90">Complimentary refreshments and light dinner provided</p>
           </div>
         </div>
       </div>
 
       <!-- Networking Interests Preview -->
       <div class="space-y-6">
-        <h2 class="text-xl font-bold text-black border-b-2 border-black pb-2">
+        <h2 class="text-xl font-bold text-white border-b border-white/30 pb-2 drop-shadow">
           Topics & Interests
         </h2>
         
         <div class="grid grid-cols-2 gap-2">
-          <div v-for="interest in networkingInterests.slice(0, 6)" :key="interest" class="border border-black p-2 text-center">
-            <span class="text-sm font-medium text-black">{{ interest }}</span>
+          <div v-for="interest in networkingInterests.slice(0, 6)" :key="interest" class="glass-card-dark p-2 text-center">
+            <span class="text-sm font-medium text-white">{{ interest }}</span>
           </div>
         </div>
-        <p class="text-sm text-gray-600">Select your interests in the registration form →</p>
+        <p class="text-sm text-white/70">Select your interests in the registration form →</p>
       </div>
     </div>
   </div>

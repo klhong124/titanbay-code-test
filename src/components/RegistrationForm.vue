@@ -1,17 +1,17 @@
 <template>
-  <div class="lg:w-1/2 bg-white">
+  <div class="glass-card h-full">
     <!-- Success Screen -->
     <div v-if="showSuccess" class="p-8 text-center min-h-screen flex flex-col justify-center">
-      <div class="inline-flex items-center justify-center w-20 h-20 border-2 border-black rounded-full mb-6 mx-auto">
-        <Check class="w-8 h-8 text-black" />
+      <div class="inline-flex items-center justify-center w-20 h-20 glass-card-dark mb-6 mx-auto">
+        <Check class="w-8 h-8 text-white" />
       </div>
-      <h2 class="text-2xl font-bold text-black mb-4">Registration Successful!</h2>
-      <p class="text-black mb-6">
+      <h2 class="text-2xl font-bold text-white mb-4 drop-shadow-lg">Registration Successful!</h2>
+      <p class="text-white/90 mb-6 drop-shadow">
         Thank you for registering for Developer Meetup 2025. We'll send you a confirmation email shortly.
       </p>
       <button
         @click="resetForm"
-        class="border-2 border-black bg-white text-black px-6 py-3 hover:bg-black hover:text-white transition-colors mx-auto"
+        class="glass-card-dark text-white px-6 py-3 hover:bg-white/20 transition-all duration-300 mx-auto font-medium"
       >
         Register Another Person
       </button>
@@ -20,26 +20,26 @@
     <!-- Registration Form -->
     <div v-else class="p-8">
       <div class="mb-8">
-        <h2 class="text-2xl font-bold text-black mb-2">Register Now</h2>
-        <p class="text-black">Fill out the form below to secure your spot</p>
+        <h2 class="text-2xl font-bold text-white mb-2 drop-shadow-lg">Register Now</h2>
+        <p class="text-white/90 drop-shadow">Fill out the form below to secure your spot</p>
       </div>
 
       <form @submit.prevent="submitForm" class="space-y-6">
         <!-- Personal Information Section -->
         <div class="space-y-4">
-          <h3 class="text-lg font-bold text-black border-b border-black pb-2">
+          <h3 class="text-lg font-bold text-white border-b border-white/30 pb-2 drop-shadow">
             Personal Information
           </h3>
 
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <label class="block text-sm font-medium text-black mb-2">
+              <label class="block text-sm font-medium text-white mb-2 drop-shadow">
                 First Name *
               </label>
               <input
                 v-model="form.firstName"
                 type="text"
-                class="w-full p-3 border-2 border-black bg-white text-black focus:border-black"
+                class="w-full p-3 text-black"
                 :class="{ 'border-red-500': errors.firstName }"
                 required
               />
@@ -49,13 +49,13 @@
             </div>
 
             <div>
-              <label class="block text-sm font-medium text-black mb-2">
+              <label class="block text-sm font-medium text-white mb-2 drop-shadow">
                 Last Name *
               </label>
               <input
                 v-model="form.lastName"
                 type="text"
-                class="w-full p-3 border-2 border-black bg-white text-black focus:border-black"
+                class="w-full p-3 text-black"
                 :class="{ 'border-red-500': errors.lastName }"
                 required
               />
@@ -66,13 +66,13 @@
           </div>
 
           <div>
-            <label class="block text-sm font-medium text-black mb-2">
+            <label class="block text-sm font-medium text-white mb-2 drop-shadow">
               Email Address *
             </label>
             <input
               v-model="form.email"
               type="email"
-              class="w-full p-3 border-2 border-black bg-white text-black focus:border-black"
+              class="w-full p-3 text-black"
               :class="{ 'border-red-500': errors.email }"
               required
             />
@@ -83,13 +83,13 @@
 
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <label class="block text-sm font-medium text-black mb-2">
+              <label class="block text-sm font-medium text-white mb-2 drop-shadow">
                 Company *
               </label>
               <input
                 v-model="form.company"
                 type="text"
-                class="w-full p-3 border-2 border-black bg-white text-black focus:border-black"
+                class="w-full p-3 text-black"
                 :class="{ 'border-red-500': errors.company }"
                 required
               />
@@ -99,13 +99,13 @@
             </div>
 
             <div>
-              <label class="block text-sm font-medium text-black mb-2">
+              <label class="block text-sm font-medium text-white mb-2 drop-shadow">
                 Role *
               </label>
               <input
                 v-model="form.role"
                 type="text"
-                class="w-full p-3 border-2 border-black bg-white text-black focus:border-black"
+                class="w-full p-3 text-black"
                 :class="{ 'border-red-500': errors.role }"
                 required
               />
@@ -116,12 +116,12 @@
           </div>
 
           <div>
-            <label class="block text-sm font-medium text-black mb-2">
+            <label class="block text-sm font-medium text-white mb-2 drop-shadow">
               Experience Level *
             </label>
             <select
               v-model="form.experienceLevel"
-              class="w-full p-3 border-2 border-black bg-white text-black focus:border-black"
+              class="w-full p-3 text-black"
               :class="{ 'border-red-500': errors.experienceLevel }"
               required
             >
@@ -141,30 +141,30 @@
 
         <!-- Preferences Section -->
         <div class="space-y-4">
-          <h3 class="text-lg font-bold text-black border-b border-black pb-2">
+          <h3 class="text-lg font-bold text-white border-b border-white/30 pb-2 drop-shadow">
             Preferences & Requirements
           </h3>
 
           <div>
-            <label class="block text-sm font-medium text-black mb-2">
+            <label class="block text-sm font-medium text-white mb-2 drop-shadow">
               Dietary Restrictions
             </label>
             <input
               v-model="form.dietaryRestrictions"
               type="text"
-              class="w-full p-3 border-2 border-black bg-white text-black focus:border-black"
+              class="w-full p-3 text-black"
               placeholder="e.g., Vegetarian, Gluten-free, etc."
             />
           </div>
 
           <div>
-            <label class="block text-sm font-medium text-black mb-2">
+            <label class="block text-sm font-medium text-white mb-2 drop-shadow">
               Special Requirements
             </label>
             <textarea
               v-model="form.specialRequirements"
               rows="3"
-              class="w-full p-3 border-2 border-black bg-white text-black focus:border-black resize-none"
+              class="w-full p-3 text-black resize-none"
               placeholder="Any special accommodations needed..."
             ></textarea>
           </div>
@@ -172,7 +172,7 @@
 
         <!-- Networking Interests Section -->
         <div class="space-y-4">
-          <h3 class="text-lg font-bold text-black border-b border-black pb-2">
+          <h3 class="text-lg font-bold text-white border-b border-white/30 pb-2 drop-shadow">
             Networking Interests
           </h3>
 
@@ -180,18 +180,18 @@
             <div
               v-for="interest in networkingInterests"
               :key="interest"
-              class="border-2 border-black p-3 cursor-pointer hover:bg-gray-50 transition-colors"
-              :class="{ 'bg-black text-white': form.interests.includes(interest) }"
+              class="glass-card-dark p-3 cursor-pointer hover:bg-white/20 transition-all duration-300"
+              :class="{ 'bg-white/30 text-white': form.interests.includes(interest) }"
               @click="toggleInterest(interest)"
             >
               <div class="flex items-center space-x-3">
                 <div
-                  class="w-4 h-4 border-2 border-black flex items-center justify-center"
-                  :class="{ 'bg-white': form.interests.includes(interest) }"
+                  class="w-4 h-4 border-2 border-white/50 flex items-center justify-center rounded"
+                  :class="{ 'bg-white/90': form.interests.includes(interest) }"
                 >
                   <Check v-if="form.interests.includes(interest)" class="w-3 h-3 text-black" />
                 </div>
-                <span class="font-medium">{{ interest }}</span>
+                <span class="font-medium text-white">{{ interest }}</span>
               </div>
             </div>
           </div>
@@ -202,9 +202,9 @@
           <button
             type="submit"
             :disabled="isLoading"
-            class="w-full px-8 py-4 border-2 border-black bg-white text-black font-bold hover:bg-black hover:text-white transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-2"
+            class="w-full px-8 py-4 glass-card-dark text-white font-bold hover:bg-white/20 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-2"
           >
-            <span v-if="isLoading" class="loading-spinner w-5 h-5 border-2 border-black border-t-transparent rounded-full"></span>
+            <span v-if="isLoading" class="loading-spinner w-5 h-5 border-2 border-white border-t-transparent rounded-full"></span>
             <span>{{ isLoading ? 'Submitting...' : 'Submit Registration' }}</span>
           </button>
         </div>
