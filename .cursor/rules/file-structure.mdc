@@ -1,0 +1,44 @@
+---
+description: Folder structure for scalable Vue 3 app following entity-based modular design.
+alwaysApply: true
+---
+
+## 📁 Folder Structure Rules
+
+### 1. Entity-Based Organization
+Organize files by **business entities** (e.g. `events/`, `attendees/`) instead of technical concerns.
+
+```
+src/
+├── events/
+│ ├── components/
+│ ├── composables/
+│ ├── types/
+│ ├── tests/
+│ └── utils/
+├── shared/
+│ ├── components/ (atoms, molecules, organisms)
+│ ├── composables/
+│ └── utils/
+```
+
+
+### 2. Per-Entity Contents
+Each entity folder should include:
+
+- `components/`: UI elements tied to the domain
+- `composables/`: Custom hooks and logic
+- `types/`: TypeScript definitions
+- `tests/`: Unit/component test files
+- `utils/`: Helper functions scoped to the entity
+
+### 3. Naming Conventions
+✅ Use:
+- `event.card.vue`
+- `useEventList.ts`
+- `attendee.form.vue`
+
+❌ Avoid:
+- `Card.vue`
+- `helpers.ts`
+- `component.vue`

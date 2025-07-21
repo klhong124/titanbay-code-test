@@ -1,0 +1,17 @@
+---
+description: Component architecture rules following Atomic Design.
+alwaysApply: true
+---
+
+## 🧩 Component Architecture (Atomic Design)
+
+- Use **Atomic Design** principles:
+  - `atoms/`: basic UI like buttons, inputs
+  - `molecules/`: grouped inputs, cards
+  - `organisms/`: forms, modals, complex blocks
+
+- Use `<script setup lang="ts">` syntax
+- Define props via `defineProps()` with types
+- Use `defineEmits()` for events
+- Expose slots with clear naming
+- File name should match the component: `UserCard.vue`, `FormInput.vue`

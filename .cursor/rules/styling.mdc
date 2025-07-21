@@ -1,0 +1,13 @@
+---
+description: Styling rules for consistency using Tailwind CSS and dark/light theme support.
+alwaysApply: false
+---
+
+## 🎨 Styling Rules
+
+- Use **Tailwind CSS** utility classes instead of inline or scoped styles whenever possible.
+- Support **dark mode** using Tailwind’s `dark:` variant and class-based strategy.
+- Use consistent spacing with Tailwind scales (`gap-6`, `px-4`, etc.).
+- Group related utility classes logically (layout → color → spacing → effects).
+- Use `@apply` only in `style scoped` blocks for repeated class combos.
+- Reference all theme tokens (colors, typography) from `tailwind.config.js`.

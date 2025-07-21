@@ -1,0 +1,30 @@
+---
+description: Form validation and accessibility rules for forms and input fields.
+alwaysApply: false
+---
+## ✅ Form Validation & Feedback
+
+- Use `v-model` bindings with zod schema validation (VeeValidate, Zod).
+- Show inline error messages after blur or on submit.
+- Input constraints:
+  - Name must not be numbers
+  - Email must follow valid pattern
+- Use semantic HTML: `<label for="id">`, `aria-describedby`
+- Autocomplete must be supported: `autocomplete="email"`, `name`, `tel`
+
+### use the Composition API
+```vue
+<template>
+  <input name="email" v-model="value" type="email" />
+  <span>{{ errorMessage }}</span>
+</template>
+<script setup>
+import { useField } from 'vee-validate';
+import { toTypedSchema } from '@vee-validate/zod';
+import * as zod from 'zod';
+const fieldSchema = toTypedSchema(
+  zod.string().min(1, { message: 'Field is required' }).email({ message: 'Must be a valid email' })
+);
+const { value, errorMessage } = useField('email', fieldSchema);
+</script>
+```

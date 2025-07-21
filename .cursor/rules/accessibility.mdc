@@ -1,0 +1,12 @@
+---
+description: Accessibility guidelines to support inclusive web practices
+alwaysApply: false
+---
+## ♿ Accessibility Standards
+
+- Use **semantic HTML**: `<form>`, `<fieldset>`, `<legend>`, `<label>`, `<button>`
+- Interactive elements must be keyboard-accessible
+- All form fields should have `aria-label` or `<label for="">`
+- Use `role`, `aria-describedby`, `aria-live` for dynamic updates
+- Preserve visible focus styles for accessibility users
+- Respect OS/browser contrast settings

@@ -1,0 +1,10 @@
+---
+alwaysApply: false
+---
+## 🌍 Internationalization (i18n)
+
+- All user-facing text must use `$t('key')` from vue-i18n.
+- Extract text into `locales/en.json`, `locales/ja.json`, etc.
+- Default language should be detected from `navigator.language`
+- Support **RTL** via `dir="rtl"` and RTL-compatible layouts
+- Format date/time according to locale with `Intl.DateTimeFormat`
