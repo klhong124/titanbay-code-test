@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen bg-white p-4 md:p-8">
+  <div class="p-4 md:p-8">
     <div class="max-w-4xl mx-auto">
       <!-- Main Form Container -->
       <div class="border-2 border-black bg-white">
@@ -9,32 +9,15 @@
             <Code class="w-8 h-8 text-black" />
           </div>
           <h1 class="text-3xl md:text-4xl font-bold text-black mb-2">
-            Developer Meetup 2025.
+            Developer Meetup 2025
           </h1>
           <p class="text-lg text-black">
             Join us for an evening of networking, learning, and collaboration with fellow developers
           </p>
         </div>
 
-        <!-- Success Screen -->
-        <div v-if="showSuccess" class="p-8 text-center">
-          <div class="inline-flex items-center justify-center w-20 h-20 border-2 border-black rounded-full mb-6">
-            <Check class="w-8 h-8 text-black" />
-          </div>
-          <h2 class="text-2xl font-bold text-black mb-4">Registration Successful!</h2>
-          <p class="text-black mb-6">
-            Thank you for registering for Developer Meetup 2025. We'll send you a confirmation email shortly.
-          </p>
-          <button
-            @click="resetForm"
-            class="border-2 border-black bg-white text-black px-6 py-3 hover:bg-black hover:text-white transition-colors"
-          >
-            Register Another Person
-          </button>
-        </div>
-
         <!-- Form -->
-        <form v-else @submit.prevent="submitForm" class="p-8 space-y-8">
+        <form @submit.prevent="submitForm" class="p-8 space-y-8">
           <!-- Personal Information Section -->
           <div class="space-y-6">
             <h2 class="text-xl font-bold text-black border-b-2 border-black pb-2">
