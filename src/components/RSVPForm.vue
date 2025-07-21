@@ -13,7 +13,7 @@
               </div>
               <div>
                 <h1 class="text-xl font-bold text-gray-900">Developer Meetup</h1>
-                <p class="text-sm text-gray-500">2025.3</p>
+                <p class="text-sm text-gray-500">2025</p>
               </div>
             </div>
             <p class="text-sm text-gray-600 leading-relaxed">
@@ -125,7 +125,7 @@
               <Code class="w-8 h-8 text-white" />
             </div>
             <h1 class="text-2xl font-bold text-gray-900 mb-2">
-              Developer Meetup 2025.3
+              Developer Meetup 2025
             </h1>
             <p class="text-gray-600">
               Join us for an evening of networking, learning, and collaboration with fellow developers
