@@ -366,15 +366,14 @@
             </div>
 
             <!-- Additional Information Section -->
-            <div class="pt-8">
+            <!-- <div class="pt-8">
               <div class="flex items-center space-x-3 mb-6">
                 <div class="w-8 h-8 bg-gradient-to-r from-orange-500 to-orange-600 rounded-lg flex items-center justify-center shadow-md">
                   <span class="text-white text-sm font-bold">4</span>
                 </div>
                 <h3 class="text-xl font-semibold text-gray-900">Additional Information</h3>
               </div>
-              <!-- This section is ready for future content -->
-            </div>
+            </div> -->
 
             <!-- Submit Button -->
             <div class="pt-8 border-t border-gray-200 mt-8">
